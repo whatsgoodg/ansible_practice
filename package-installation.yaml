@@ -1,0 +1,13 @@
+---
+- name: LAMP installation 
+  hosts: webserver
+  vars_files:
+    - packages.yaml
+  tasks:
+    - name: package installation
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ packages }}"
+
+    
