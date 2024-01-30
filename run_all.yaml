@@ -1,0 +1,10 @@
+---
+- name: run db at once
+  hosts: servere
+  roles:
+    - db
+    
+- name: run webserver at once
+  hosts: serverd
+  roles:
+    - ws

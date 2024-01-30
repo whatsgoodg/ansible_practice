@@ -1,0 +1,38 @@
+---
+# tasks
+- name: package installation
+  yum:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ packages }}"
+
+- name: removing index.html file to replace 
+  file:
+    path: /var/www/html/index.html
+    state: absent
+- name: copying index.php to webserver
+  template:
+    src: index.php.j2
+    dest: /var/www/html/index.php
+  changed_when: true
+  notify:
+    - restart httpd
+
+- name: copying index.php to webserver
+  template:
+    src: index.php.j2
+    dest: /var/www/html/index.php
+  changed_when: true
+  notify:
+    - restart httpd
+
+
+- name: copying files related to connection
+  copy:
+    src: process_create.php
+    dest: /var/www/html
+- name: copying files related to connection
+  copy:
+    src: create.php
+    dest: /var/www/html
+

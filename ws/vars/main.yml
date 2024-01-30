@@ -8,3 +8,5 @@ packages:
   - php-curl
   - php-mysqlnd
   - php-mysqli
+
+var1: production
